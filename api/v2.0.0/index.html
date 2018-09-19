@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Tuva Data Tools Environment API Documentation</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/docs.min.css">
+
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+    <!-- Header -->
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+              <li class="nav-item">
+                <a class="nav-link " href="javascript:void(0);" >Tuva Data Tools API</a>
+              </li>
+            </ul>
+        </div>
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex"></ul>
+        <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://tuvalabs.com/changelogs/data-exploration/#v2.0.0-a11y-3">v2.0.0</a>
+    </header>
+
+    <!-- Side Nav -->
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+                <nav id="navbar-example" class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#quick-start">Quick Start</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#initialized-with-data">Initialized with Data</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#initialized-without-data">Initialized without Data</a>
+                    </li>
+<!--                     <li class="nav-item">
+                      <a class="nav-link" href="#settings-options">Settings Options</a>
+                    </li>
+ -->                    <li class="nav-item">
+                        <a class="nav-link" href="#retrieve-input">Retrieve Input</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#retrieve-plotstate">Retrieve PlotState</a>
+                    </li>
+                  </ul>
+                </nav>
+            </div>
+
+            <!-- Content -->
+            <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+                <div id="quick-start" class="section-block">
+                    <h3 class="block-title">Quick Start</h3>
+                    
+                    <div>
+                        <span>Get the Tuva Data Exploration code base from the Github first.</span>
+
+                        <div class="individual-block">
+                            <p>Step 1 : Import dependencies</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        &lt;script src="../lib/jquery.js"&gt;&lt;/script&gt;
+        &lt;script src="../lib/react.js"&gt;&lt;/script&gt;
+        &lt;script src="../lib/react-dom.js"&gt;&lt;/script&gt;
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Step 2 : Import tuva-data-tools lib, and style</h4>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        &lt;script src="../lib/data-exploration/tuva-data-tools.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" href="../lib/data-exploration/tuva-data-tools.css"/&gt;
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//row-->  
+
+                <div id="initialized-with-data" class="section-block">
+                    <h3 class="block-title">Initialize with Data</h3>
+                    <div>
+                        <div>
+                            <div>TODO: text to explain</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        &lt;script type="text/javascript"&gt;
+            jQuery.ajax({
+                url: "data.json",
+                success: function (data) {
+                    ReactDOM.render(
+                        React.createElement(TuvaDataTools, {
+                            columnIds: data.columnIds,
+                            columnNames: data.columnNames,
+                            rowData: data.rowData,
+                            metaData: data.metaData,
+                            plotState: data.plotState,
+                            language: 'en-US',
+                            onPlotSave: function(plotData) {
+                                alert('Perform save; check the value returned to test the output!');
+                                console.log("Save Plot Data:", JSON.stringify(plotData.plotState));
+                            },
+                            onMetaDataSave: function(metaData) {
+                                console.log("Save Meta Data:", metaData);
+                            }
+                        }),
+                        document.getElementById("plotElement")
+                    );
+                }
+            });
+        &lt;/script&gt;
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
+                <div id="initialized-without-data" class="section-block">
+                    <h3 class="block-title">Initialize without Data</h3>
+                    <div>
+                        <div>
+                            <div>Without data ( allows user to select dataset/ drag-drop csv)</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        &lt;!-- Tuva Data Tools --&gt;
+
+        &lt;script src="../../lib/data-exploration/tuva-data-tools-file-upload.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" href="../../lib/data-exploration/tuva-data-tools-file-upload.css"/&gt;
+
+        &lt;!-- Initialize environment --&gt;
+        &lt;script&gt;
+            ReactDOM.render(
+                React.createElement(TuvaDataToolsFileUpload, {}),
+                document.getElementById("plotElement")
+            );
+        &lt;/script&gt;
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
+<!--                 <div id="settings-options" class="section-block">
+                    <h3 class="block-title">Settings Options</h3>
+                    <div>
+                        <h6>Discussions Overview</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                    </div>
+                </div>
+-->
+                <div id="settings-options" class="section-block">
+                    <h3 class="block-title">Retrieve Input</h3>
+                    <div>
+                        <div>
+                            <div>How to generate json object from the environment?</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        var dataExploration = ReactDOM.render(
+            React.createElement(TuvaDataTools, {
+                …
+            }),
+            document.getElementById("plotElement")
+        );
+
+        // columnIds, columnNames, rowData is from the input provided
+        window.getDataJson = function() {
+            var config = dataExploration.getPlotStateAndMetaData();
+            config.columnIds = columnIds;
+            config.columnNames = columnNames;
+            config.rowData = rowData;
+            console.log("data.json", JSON.stringify(config, null, 4));
+        };
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
+                <div id="settings-plotstate" class="section-block">
+                    <h3 class="block-title">Retrieve PlotState</h3>
+                    <div>
+                        <div>
+                            <div>Retrieve current plot state</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        var dataExploration = ReactDOM.render(
+            React.createElement(TuvaDataTools, {
+                …
+            }),
+            document.getElementById("plotElement")
+        );
+
+        dataExploration.getPlotState();
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
+
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap JS -->
+    <script src="/assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/stickyfill/dist/stickyfill.min.js"></script> 
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+</body>
+</html>

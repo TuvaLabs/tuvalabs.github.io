@@ -44,15 +44,25 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#initialized-without-data">Initialized without Data</a>
                     </li>
-<!--                     <li class="nav-item">
-                      <a class="nav-link" href="#settings-options">Settings Options</a>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#multiple-environment">Multiple Environment</a>
                     </li>
- -->                    <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#retrieve-input">Retrieve Input</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#retrieve-plotstate">Retrieve PlotState</a>
+                      <a class="nav-link" href="#retrieve-plotstate">Retrieve State</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#tuva-listeners">Listeners</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#plot-settings">Plot Settings</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#languages">Languages</a>
+                    </li>
+
                   </ul>
                 </nav>
             </div>
@@ -67,6 +77,7 @@
 
                         <div class="individual-block">
                             <p>Step 1 : Import dependencies</p>
+                            <p> Get the latest version of React from <a href="https://reactjs.org/docs/add-react-to-a-website.html" target="_blank">reactjs.org</a> and jquery <a href="https://jquery.com/download/" target="_blank">3.2.1</a> (soon the jquery reference will be removed)</p>
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
@@ -78,7 +89,7 @@
                             </div>
                         </div>
                         <div>
-                            <h4>Step 2 : Import tuva-data-tools lib, and style</h4>
+                            <p>Step 2 : Import tuva-data-tools lib, and style file from provided repo.</p>
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
@@ -95,30 +106,33 @@
                     <h3 class="block-title">Initialize with Data</h3>
                     <div>
                         <div>
-                            <div>TODO: text to explain</div>
+                            <div>Here is sample <a href="data.json" target="_blank">data.json</a>. You can generate the sample file using Tuva authoring tool.</div>
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
         &lt;script type="text/javascript"&gt;
+
+            var tuvaDataToolsProperties = {
+                columnIds: data.columnIds,
+                columnNames: data.columnNames,
+                rowData: data.rowData,
+                metaData: data.metaData,
+                plotState: data.plotState,
+                language: 'en-US',
+                onPlotSave: function(plotData) {
+                    alert('Perform save; check the value returned to test the output!');
+                    console.log("Save Plot Data:", JSON.stringify(plotData.plotState));
+                },
+                onMetaDataSave: function(metaData) {
+                    console.log("Save Meta Data:", metaData);
+                }
+            };
+
             jQuery.ajax({
                 url: "data.json",
                 success: function (data) {
                     ReactDOM.render(
-                        React.createElement(TuvaDataTools, {
-                            columnIds: data.columnIds,
-                            columnNames: data.columnNames,
-                            rowData: data.rowData,
-                            metaData: data.metaData,
-                            plotState: data.plotState,
-                            language: 'en-US',
-                            onPlotSave: function(plotData) {
-                                alert('Perform save; check the value returned to test the output!');
-                                console.log("Save Plot Data:", JSON.stringify(plotData.plotState));
-                            },
-                            onMetaDataSave: function(metaData) {
-                                console.log("Save Meta Data:", metaData);
-                            }
-                        }),
+                        React.createElement(TuvaDataTools, tuvaDataToolsProperties),
                         document.getElementById("plotElement")
                     );
                 }
@@ -158,6 +172,44 @@
                     </div>
                 </div><!--//section-block-->
 
+                <div id="multiple-environment" class="section-block">
+                    <h3 class="block-title">Multiple Environment</h3>
+                    <div>
+                        <div>
+                            <div>Initialize multiple environment on the same page</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        &lt;!-- Tuva Data Tools --&gt;
+
+        &lt;script src="../../lib/data-exploration/tuva-data-tools-file-upload.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" href="../../lib/data-exploration/tuva-data-tools-file-upload.css"/&gt;
+
+        &lt;div id="plotElement1"&gt;&lt;/div&gt;
+        &lt;div id="plotElement2"&gt;&lt;/div&gt;
+
+        &lt;!-- First environment --&gt;
+        &lt;script&gt;
+            ReactDOM.render(
+                React.createElement(TuvaDataToolsFileUpload, {}),
+                document.getElementById("plotElement1")
+            );
+        &lt;/script&gt;
+
+        &lt;!-- Second environment --&gt;
+        &lt;script&gt;
+            ReactDOM.render(
+                React.createElement(TuvaDataToolsFileUpload, {}),
+                document.getElementById("plotElement2")
+            );
+        &lt;/script&gt;
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
 <!--                 <div id="settings-options" class="section-block">
                     <h3 class="block-title">Settings Options</h3>
                     <div>
@@ -166,7 +218,7 @@
                     </div>
                 </div>
 -->
-                <div id="settings-options" class="section-block">
+                <div id="retrieve-input" class="section-block">
                     <h3 class="block-title">Retrieve Input</h3>
                     <div>
                         <div>
@@ -196,22 +248,16 @@
                     </div>
                 </div><!--//section-block-->
 
-                <div id="settings-plotstate" class="section-block">
-                    <h3 class="block-title">Retrieve PlotState</h3>
+                <div id="retrieve-plotstate" class="section-block">
+                    <h3 class="block-title">Retrieve State</h3>
                     <div>
                         <div>
                             <div>Retrieve current plot state</div>
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        var dataExploration = ReactDOM.render(
-            React.createElement(TuvaDataTools, {
-                …
-            }),
-            document.getElementById("plotElement")
-        );
-
-        dataExploration.getPlotState();
+        // get plotstate
+        var plotState = dataExploration.getPlotState();
     </code></pre>
 </figure>
                             </div>
@@ -219,6 +265,108 @@
                     </div>
                 </div><!--//section-block-->
 
+                <div id="tuva-listeners" class="section-block">
+                    <h3 class="block-title">Tuva Listeners</h3>
+                    <div>
+                        <div>
+                            <div>Various Tuva events and listeners</div>
+                            <p>Add below events during the initialization.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        &lt;script type="text/javascript"&gt;
+
+            var tuvaDataToolsProperties = {
+                ...
+                onPlotSave: function(plotData) {
+                    // after setting breakpoint here, copy output of JSON.stringify(e.detail.plotState) to plotState= { }; on line 76
+                    alert('Perform save; add debugger and check the value returned to test the output!');
+                    console.log("Save Plot Data:", plotData);
+                },
+                onMetaDataSave: function(metaData) {
+                    console.log("Save Meta Data:", metaData);
+                },
+                onReady: function() {
+                    console.log("Env. is ready");
+                }
+            }
+
+        &lt;/script&gt;
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
+                <div id="plot-settings" class="section-block">
+                    <h3 class="block-title">Plot Settings</h3>
+                    <div>
+                        <div>
+                            <div>Update plot settings</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        /** TODO */
+        // dataExploration.updateSettings({});
+    </code></pre>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
+
+                <div id="languages" class="section-block">
+                    <h3 class="block-title">Languages</h3>
+                    <div>
+                        <div>
+                            <div>Supported languages for Tuva</div>
+                            <div class="code">
+<figure class="highlight">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>en-US</td>
+                <td>English</td>
+            </tr>
+            <tr>
+                <td>ar-SD</td>
+                <td>Arabic</td>
+            </tr>
+            <tr>
+                <td>es</td>
+                <td>Spanish</td>
+            </tr>
+            <tr>
+                <td>fr</td>
+                <td>French</td>
+            </tr>
+            <tr>
+                <td>de</td>
+                <td>German</td>
+            </tr>
+            <tr>
+                <td>cantonese</td>
+                <td>Cantonese</td>
+            </tr>
+            <tr>
+                <td>mandarin</td>
+                <td>Mandarin</td>
+            </tr>
+
+        </tbody>
+    </tbody>
+</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--//section-block-->
 
 
             </main>

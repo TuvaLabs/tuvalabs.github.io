@@ -1,0 +1,18 @@
+{
+    "columnIds": ["id", "moons", "diameter", "mean-distance-from-jupiter", "orbital-period"],
+    "columnNames": ["Case", "Moons", "Diameter (km)", "Mean Distance from Jupiter (km)", "Orbital Period (days)"],
+    "rowData": [
+        [1, "Callisto", "4800", "2000000", "16.7"],
+        [2, "Europa", "3318", "700000", "3.5"],
+        [3, "Ganymede", "5262", "1000000", "7.2"],
+        [4, "Io", "3630","400000", "1.8"]
+    ],
+    "metaData": {
+        "fields":[     {"sort":"ascending","name":"Case","long_name":"","subtype":"","type":"","id":"id","categories":[]},
+            {"sort":"ascending","name":"Moons","long_name":"","subtype":"","type":"","id":"moons-attrib0","categories":[]},
+            {"sort":"ascending","name":"Diameter (km)","long_name":"","subtype":"","type":"","id":"diameter-attrib1","categories":[]},
+            {"sort":"ascending","name":"Mean Distance from Jupiter (km)","long_name":"","subtype":"","type":"","id":"mean-distance-from-jupiter-attrib2","categories":[]},
+            {"sort":"ascending","name":"Orbital Period (days)","long_name":"","subtype":"","type":"","id":"orbital-period-attrib3","categories":[]}
+        ]
+    }
+}

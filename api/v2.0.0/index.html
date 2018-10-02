@@ -54,7 +54,7 @@
                       <a class="nav-link" href="#retrieve-plotstate">Retrieve State</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#tuva-listeners">Listeners</a>
+                      <a class="nav-link" href="#tuva-listeners">Listeners and Methods</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#plot-settings">Plot Settings</a>
@@ -266,11 +266,11 @@
                 </div><!--//section-block-->
 
                 <div id="tuva-listeners" class="section-block">
-                    <h3 class="block-title">Tuva Listeners</h3>
+                    <h3 class="block-title">Tuva Listeners and Methods</h3>
                     <div>
                         <div>
-                            <div>Various Tuva events and listeners</div>
-                            <p>Add below events during the initialization.</p>
+                            <div><strong>Various Tuva events and listeners:</strong></div>
+                            <!-- <p>Add below events during the initialization.</p> -->
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
@@ -288,12 +288,58 @@
                 },
                 onReady: function() {
                     console.log("Env. is ready");
+                },
+                onUserAction: function( action, plotState ) {
+                    // capture the current plot state and retrieve the action log
+                    console.log("Action: ", action);
+                    console.log("plotState: ", plotState);
                 }
             }
 
+            var tuvaDataTools = ReactDOM.render(
+                React.createElement(TuvaDataTools, tuvaDataToolsProperties),
+                document.getElementById("plotElement")
+            );
         &lt;/script&gt;
     </code></pre>
 </figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div><strong>Methods:</strong></div>
+                            <p><strong>changeMode( mode )</strong>:&nbsp; Chagne the Toolbar mode - Default, Elementry, Middle School, High School. Based on the criteria provided, it will simplify toolbar options to reduce nuber of actions user may take.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        // Possible mode values are: 'elem', 'middle', 'high', ''
+        tuvaDataTools.actions.changeMode("elem");
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>changeTheme( theme )</strong>:&nbsp; Chagne the foreground and background of the environment.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        // Possible theme values are: tuva, yellow-on-blue, reverse-contrast, black-on-rose 
+        tuvaDataTools.actions.changeTheme('reverse-contrast');
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>resize()</strong>:&nbsp; Adjust the visualization environment based on the window resize, or post zoom action.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        tuvaDataTools.actions.resize();
+    </code></pre>
+</figure>
+
                             </div>
                         </div>
                     </div>

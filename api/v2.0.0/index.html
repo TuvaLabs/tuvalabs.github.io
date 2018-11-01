@@ -62,6 +62,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#languages">Languages</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#destory">Destroy</a>
+                    </li>
 
                   </ul>
                 </nav>
@@ -407,13 +410,31 @@
             </tr>
 
         </tbody>
-    </tbody>
+    </table>
 </figure>
                             </div>
                         </div>
                     </div>
                 </div><!--//section-block-->
 
+                <div id="destory" class="section-block">
+                    <h3 class="block-title">Destory</h3>
+                    <div>
+                        <div>
+                            <div>Destroy an existing plot view.</div>
+                            <div class="code">
+                                <figure class="highlight">
+                                    <pre><code class="language-html" data-lang="javascript">
+// Get DOM reference of a plot view container
+var container = document.getElementById("plotElement");
+// Destroy
+ReactDOM.unmountComponentAtNode(container);
+                                    </code></pre>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </main>
         </div>

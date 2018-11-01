@@ -229,7 +229,7 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        var dataExploration = ReactDOM.render(
+        var tuvaDataTools = ReactDOM.render(
             React.createElement(TuvaDataTools, {
                 …
             }),
@@ -239,8 +239,8 @@
         // columnIds, columnNames, rowData is from the input provided
         window.getDataJson = function() {
             var config = {};
-            config.metaData = dataExploration.getMetaData();
-            config.plotState = dataExploration.getPlotState();
+            config.metaData = tuvaDataTools.actions.getMetaData();
+            config.plotState = tuvaDataTools.actions.getPlotState();
             config.columnIds = columnIds;
             config.columnNames = columnNames;
             config.rowData = rowData;
@@ -261,8 +261,8 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        // get plotstate
-        var plotState = dataExploration.getPlotState();
+// get plotstate
+var plotState = tuvaDataTools.actions.getPlotState();
     </code></pre>
 </figure>
                             </div>
@@ -392,7 +392,7 @@ tuvaDataTools.actions.getMetaData();
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
         /** TODO */
-        // dataExploration.updateSettings({});
+        // tuvaDataTools.actions.updateSettings({});
     </code></pre>
 </figure>
                             </div>

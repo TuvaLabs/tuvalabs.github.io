@@ -65,6 +65,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#languages">Languages</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#destory">Destroy</a>
+                    </li>
 
                   </ul>
                 </nav>
@@ -80,7 +83,7 @@
 
                         <div class="individual-block">
                             <p>Step 1 : Import dependencies</p>
-                            <p> Get the latest version of React from <a href="https://reactjs.org/docs/add-react-to-a-website.html" target="_blank">reactjs.org</a> and jquery <a href="https://jquery.com/download/" target="_blank">3.2.1</a> (soon the jquery reference will be removed)</p>
+                            <p> Get the version of React from <a href="https://reactjs.org/docs/add-react-to-a-website.html" target="_blank">reactjs.org</a> (15.6.1) for React, React-DOM and jquery <a href="https://jquery.com/download/" target="_blank">3.2.1</a> (soon the jquery reference will be removed)</p>
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
@@ -229,7 +232,7 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        var dataExploration = ReactDOM.render(
+        var tuvaDataTools = ReactDOM.render(
             React.createElement(TuvaDataTools, {
                 …
             }),
@@ -238,7 +241,9 @@
 
         // columnIds, columnNames, rowData is from the input provided
         window.getDataJson = function() {
-            var config = dataExploration.getPlotStateAndMetaData();
+            var config = {};
+            config.metaData = tuvaDataTools.actions.getMetaData();
+            config.plotState = tuvaDataTools.actions.getPlotState();
             config.columnIds = columnIds;
             config.columnNames = columnNames;
             config.rowData = rowData;
@@ -259,8 +264,8 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        // get plotstate
-        var plotState = dataExploration.getPlotState();
+// get plotstate
+var plotState = tuvaDataTools.actions.getPlotState();
     </code></pre>
 </figure>
                             </div>
@@ -315,8 +320,8 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        // Possible mode values are: 'elem', 'middle', 'high', ''
-        tuvaDataTools.actions.changeMode("elem");
+// Possible mode values are: 'elem', 'middle', 'high', ''
+tuvaDataTools.actions.changeMode("elem");
     </code></pre>
 </figure>
 
@@ -327,8 +332,8 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        // Possible theme values are: tuva, yellow-on-blue, reverse-contrast, black-on-rose 
-        tuvaDataTools.actions.changeTheme('reverse-contrast');
+// Possible theme values are: tuva, yellow-on-blue, reverse-contrast, black-on-rose 
+tuvaDataTools.actions.changeTheme('reverse-contrast');
     </code></pre>
 </figure>
 
@@ -339,12 +344,45 @@
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        tuvaDataTools.actions.resize();
+tuvaDataTools.actions.resize();
     </code></pre>
 </figure>
 
                             </div>
                         </div>
+                        <div>
+                            <p><strong>getPlotState()</strong>:&nbsp; Get current plot state.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+tuvaDataTools.actions.getPlotState();
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>setPlotState()</strong>:&nbsp; Set plot state.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+tuvaDataTools.actions.setPlotState(plotState);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                                <p><strong>getMetaData()</strong>:&nbsp; Get metadata specific to current environment.</p>
+                                <div class="code">
+    <figure class="highlight">
+        <pre><code class="language-html" data-lang="html">
+tuvaDataTools.actions.getMetaData();
+        </code></pre>
+    </figure>
+    
+                                </div>
+                            </div>
                     </div>
                 </div><!--//section-block-->
 
@@ -357,7 +395,7 @@
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
         /** TODO */
-        // dataExploration.updateSettings({});
+        // tuvaDataTools.actions.updateSettings({});
     </code></pre>
 </figure>
                             </div>
@@ -700,6 +738,32 @@
                     </div>
                 </div><!--//section-block-->
 
+                <div id="destory" class="section-block">
+                    <h3 class="block-title">Destory</h3>
+                    <div>
+                        <div>
+                            <div>Destroy an existing plot view.</div>
+                            <div class="code">
+                                <figure class="highlight">
+                                    <pre><code class="language-html" data-lang="javascript">
+tuvaDataTools.actions.destroy();
+tuvaDataTools = null;
+                                    </code></pre>
+                                </figure>
+                                <p class="text-center">-- OR --</p>
+                                <figure class="highlight">
+                                    <pre><code class="language-html" data-lang="javascript"></code>
+// Get DOM reference of a plot view container
+var container = document.getElementById("plotElement");
+// Destroy
+ReactDOM.unmountComponentAtNode(container);
+tuvaDataTools = null;
+                                    </code></pre>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </main>
         </div>

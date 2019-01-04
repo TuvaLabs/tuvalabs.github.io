@@ -60,6 +60,9 @@
                       <a class="nav-link" href="#plot-settings">Plot Settings</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="#plotstate">PlotState</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="#languages">Languages</a>
                     </li>
 
@@ -362,6 +365,289 @@
                     </div>
                 </div><!--//section-block-->
 
+<div id="plotstate" class="section-block">
+                    <h3 class="block-title">PlotState Explained</h3>
+                    <div>
+                        <div>
+                            <div>Here is a sample PlotState for one of the dataset with two attributes "Attribute A", and "Attribute B"</div>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+        {
+            "xAxisView":{"attributeID":"attribute-a"},
+            "yAxisView":{"attributeID":"attribute-b"},
+            "topView":{"chartTitleText":"Bar Chart"},        
+            "legendView":{"legendThickness":138.02},
+            "plotShaper":{
+                "plotElements":[
+                    {"primaryType":"controlsUnstackedBarChart","needsDefaultTitle":false},            {"primaryType":"controlsCount","controlsCellCount":false,"controlsSectionCount":true,"controlsSectionSum":false}
+                ]
+            },
+            "dataSet":{
+                    "attributes":[
+                            {"ID":"attribute-a"},
+                            {"ID":"attribute-b"}
+                    ],
+                    "filters":{
+                        "excludedCaseIndices":[],"attributeFilters":{}
+                    },
+                    "selectedCases":[],
+                    "selectedCategories":[],
+                    "orderByAttributeId":"attribute-a",
+                    "selectedAttributeId":"attribute-a"
+            }
+        }
+    </code></pre>
+</figure>
+                            </div>
+
+                            <div>Explanation for each of the fields in plot state</div>
+<div class="code">
+    <figure class="highlight">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Field</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>xAxisView</td>
+                    <td>
+<pre>
+<code class="language-html" data-lang="html">
+{"attributeID":"attribute-a"}
+</code>
+</pre>
+<span>Dictionary value with attribute id on the X Axis. If there are more than one attribute on axis, it will be something like below -</span>
+<pre>
+<code class="language-html" data-lang="html">
+{
+    "allAttributeIDs": [
+        "attribute-a",
+        "attribute-b"
+    ]
+}
+</code></pre>
+<span>if no attribute on x axis -</span>
+<pre>
+<code class="language-html" data-lang="html">
+"xAxisView": {
+    "titleString": "(drag and drop X attribute here)"
+}
+</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>yAxisView</td>
+                    <td>
+<pre>
+<code class="language-html" data-lang="html">
+{"attributeID":"attribute-b"}
+</code>
+</pre>
+<span>Dictionary value with attribute id on the Y Axis. If there are more than one attribute on axis, it will be something like below -</span>
+<pre>
+<code class="language-html" data-lang="html">
+{
+    "allAttributeIDs": [
+        "attribute-b",
+        "attribute-a"
+    ]
+}
+</code></pre>
+<span>if no attribute on y axis -</span>
+<pre>
+<code class="language-html" data-lang="html">
+"yAxisView": {
+    "titleString": "(drag and drop Y attribute here)"
+}
+</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>topView</td>
+                    <td>
+<pre>
+<code class="language-html" data-lang="html">
+{"chartTitleText":"Bar Chart"}
+</code>
+</pre>
+<span>Title of the chart given by the user. It also puts automatic value on click of the type of the plot to make it easy for end user.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>legendView</td>
+                    <td>
+<pre>
+<code class="language-html" data-lang="html">
+{"legendThickness":138.02}
+</code>
+</pre>
+<span>Thickness of the legend view, as its streatchable. If you are looking for color by attribute, you can find it in Dataset field.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>plotShaper</td>
+                    <td>
+<pre>
+<code class="language-html" data-lang="html">
+{
+    "plotElements":[
+        {"primaryType":"controlsUnstackedBarChart","needsDefaultTitle":false},
+        {"primaryType":"controlsCount",
+            "controlsCellCount":false,
+            "controlsSectionCount":true,"controlsSectionSum":false}
+    ]
+}
+</code>
+</pre>
+<span>PlotShaper can have multiple elements, as it shows you what type of plot it is, and what other stats functions are enabled on the plot. In above example it shows the plot is UnStacked Bar Chart, and in stats Count is enabled, and also Section Count, which shows count by each section, based on colored attribute. Below are few possible values for primaryType - </span>
+<div>&nbsp;</div>
+<table>
+    <tr>
+        <td>controlsMixup</td>
+        <td>Random State, initial view</td>
+    </tr>
+    <tr>
+        <td>controlsDotPlot</td>
+        <td>Dot Plot - Attribute on only one axis, or on both the axis (scatter)</td>
+    </tr>
+    <tr>
+        <td>controlsLineGraphSingle</td>
+        <td>Default line graph with one line on the plot</td>
+    </tr>
+    <tr>
+        <td>controlsLineAndCategoryGraph</td>
+        <td>Line graphs with seperate line for each of the category (selected attribute categories with colors shown on legend area)</td>
+    </tr>
+    <tr>
+        <td>controlsUnstackedBarChart</td>
+        <td>Regular Bar chart with numerical values on oposite axis.</td>
+    </tr>
+    <tr>
+        <td>controlsStackedBarChart</td>
+        <td>Stached Bar chart with similar category value shown in single bar with total above the bar, and invidual count inside the sections</td>
+    </tr>
+    <tr>
+        <td>controlsStretchedBarChart</td>
+        <td>Stretched Bar chart with individual bar going 100%, and sections inside takes relative height accordingly.</td>
+    </tr>
+    <tr>
+        <td>controlsHistogram</td>
+        <td>Histogram with option to increase or decrease number of bins</td>
+    </tr>
+    <tr>
+        <td>controlsPieChart</td>
+        <td>Pie chart with automatic grouping by selected attribute, if numerical attribute is selected, it creats bar chart with numerical range as categories</td>
+    </tr>
+    <tr>
+        <td>controlsBoxOnlyPlot</td>
+        <td>Regular Box Plot, which shows only Box Plot and 5 field summary</td>
+    </tr>
+    <tr>
+        <td>controlsBoxAndOutlierPlot</td>
+        <td>Box Plot with Outlier values</td>
+    </tr>
+    <tr>
+        <td>controlsBoxAndDotPlot</td>
+        <td>Box Plot with Dot Plot overlayed</td>
+    </tr>
+    <tr>
+        <td>controlsCount</td>
+        <td>Count of number of cases. It works differently based on attribute on the axis. If categorical value on axis, it shows count by bins</td>
+    </tr>
+    <tr>
+        <td>controlsPercentage</td>
+        <td>Percentage Value on plot</td>
+    </tr>
+    <tr>
+        <td>controlsMean</td>
+        <td>Mean showsn on the plot against numerical values</td>
+    </tr>
+    <tr>
+        <td>controlsMedian</td>
+        <td>Median shown on the plot against numerical values</td>
+    </tr>
+        <tr>
+        <td>controlsMode</td>
+        <td>Mode shown on the plot against numerical values</td>
+    </tr>
+    <tr>
+        <td>controlsStDeviation</td>
+        <td>Standard Deviation shown on the plot against numerical values</td>
+    </tr>
+    <tr>
+        <td>controlsRefLine</td>
+        <td>Reference line on the axis</td>
+    </tr>
+    <tr>
+        <td>controlsYRefLine</td>
+        <td>Reference line on Y axis.</td>
+    </tr>
+    <tr>
+        <td>controlsDiagRefLine</td>
+        <td>Diagonal ref line view.</td>
+    </tr>
+        <tr>
+        <td>controlsLeastSquares</td>
+        <td>Least Square line on dot plot or line graph</td>
+    </tr>
+    <tr>
+        <td>controlsDividers</td>
+        <td>Dividers are enabled on plot, it also enables count/percentage on plot</td>
+    </tr>
+    <tr>
+        <td>controlsMap</td>
+        <td>Map in background is enabled</td>
+    </tr>
+    <tr>
+        <td>controlsPlotFunction</td>
+        <td>Allow to plot various plot functions via Case Card</td>
+    </tr>
+    <tr>
+        <td>controlsGridLines</td>
+        <td>Enable grid lines on the plot</td>
+    </tr>
+</table>
+</td>
+</tr>
+                <tr>
+                    <td>dataSet</td>
+                    <td>
+<pre>
+<code class="language-html" data-lang="html">
+{
+        "attributes":[
+                {"ID":"attribute-a"},
+                {"ID":"attribute-b"}
+        ],
+        "filters":{
+            "excludedCaseIndices":[],"attributeFilters":{}
+        },
+        "selectedCases":[],
+        "selectedCategories":[],
+        "orderByAttributeId":"attribute-a",
+        "selectedAttributeId":"attribute-a"
+}
+</code>
+</pre>
+<span>It includes dataset attributes, dictionary by Id (if change in data type), filters to show if dataset in current state is filtered by group of categories (Selected or on axis), Selected Cases to show the number of cases selected, Order by Attribute Id, and selected Attribute Id. </span>
+<div>&nbsp;</div>
+</td>
+</tr>
+
+            </tbody>
+        </table>
+    </figure>
+</div>
+                            
+                        </div>
+                    </div>
+                </div>
+<!--//section-block-->
+
                 <div id="languages" class="section-block">
                     <h3 class="block-title">Languages</h3>
                     <div>
@@ -407,7 +693,7 @@
             </tr>
 
         </tbody>
-    </tbody>
+    </table>
 </figure>
                             </div>
                         </div>

@@ -411,7 +411,8 @@ tuvaDataTools.actions.getMetaData();
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-        {
+    { 
+        "plotview": {
             "xAxisView":{"attributeID":"attribute-a"},
             "yAxisView":{"attributeID":"attribute-b"},
             "topView":{"chartTitleText":"Bar Chart"},        
@@ -434,12 +435,26 @@ tuvaDataTools.actions.getMetaData();
                     "orderByAttributeId":"attribute-a",
                     "selectedAttributeId":"attribute-a"
             }
+        },
+        "toolbar": {
+            "toolbarItems": [
+                "Mixup",
+                "Dot",
+                "CellPercent",
+                "SectionPercent",
+                "OverallPercent",
+                "XRefLine",
+                "Save"
+            ]
         }
+        "language": "en-US",
+        "version": 1
+    }
     </code></pre>
 </figure>
                             </div>
 
-                            <div>Explanation for each of the fields in plot state</div>
+                            <div>Explanation for each of the fields of the field <span class="badge badge-secondary">plotview</span> at plot state</div>
 <div class="code">
     <figure class="highlight">
         <table class="table">
@@ -680,7 +695,30 @@ tuvaDataTools.actions.getMetaData();
         </table>
     </figure>
 </div>
-                            
+
+                            <div>Explanation for each of the fields of the field <span class="badge badge-secondary">toolbar</span> at plot state</div>
+                            <div class="code">
+                                <figure class="highlight">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Field</th>
+                                                <th scope="col">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>toolbarItems</td>
+                                                <td>
+                                                    This property will hold the list of menu key which has to be shown at toolbar.
+                                                    <br>
+                                                    Example: Mixup, Dot, CellPercent
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </figure>
+                            </div> 
                         </div>
                     </div>
                 </div>

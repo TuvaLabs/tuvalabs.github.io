@@ -407,34 +407,98 @@ tuvaDataTools.actions.getMetaData();
                     <h3 class="block-title">PlotState Explained</h3>
                     <div>
                         <div>
-                            <div>Here is a sample PlotState for one of the dataset with two attributes "Attribute A", and "Attribute B"</div>
+                            <div>Here is a sample PlotState for one of the <a target="_blank" href="https://tuvalabs.com/upload/p/77ff4b56db114545816bb318fb4659fc/">dataset</a>.</div><br>
+                            <div>
+                                <img height="500px;" src="/assets/images/image3.png" title="dataplot details">
+                            </div>
                             <div class="code">
 <figure class="highlight">
     <pre><code class="language-html" data-lang="html">
-    { 
-        "plotview": {
-            "xAxisView":{"attributeID":"attribute-a"},
-            "yAxisView":{"attributeID":"attribute-b"},
-            "topView":{"chartTitleText":"Bar Chart"},        
-            "legendView":{"legendThickness":138.02},
-            "plotShaper":{
-                "plotElements":[
-                    {"primaryType":"controlsUnstackedBarChart","needsDefaultTitle":false},            {"primaryType":"controlsCount","controlsCellCount":false,"controlsSectionCount":true,"controlsSectionSum":false}
-                ]
+    {
+        "xAxisView": {
+            "attributeID": "length-meters"
+        },
+        "yAxisView": {
+            "attributeID": "height-meters"
+        },
+        "topView": {
+            "chartTitleText": "Scatter plot"
+        },
+        "legendView": {
+            "legendThickness": 100
+        },
+        "plotShaper": {
+            "plotElements": [
+                {
+                    "primaryType": "controlsDotPlot",
+                    "needsDefaultTitle": false
+                },
+                {
+                    "primaryType": "controlsDiagRefLine",
+                    "lines": [
+                        {
+                            "normal": {
+                                "x1": 0,
+                                "y1": 0,
+                                "x2": 0.79125,
+                                "y2": 0.9647058823529412
+                            },
+                            "color": "#4dc00e"
+                        }
+                    ]
+                }
+            ]
+        },
+        "dataSet": {
+            "attributes": [
+                {
+                    "ID": "id"
+                },
+                {
+                    "ID": "name"
+                },
+                {
+                    "ID": "diet"
+                },
+                {
+                    "ID": "group"
+                },
+                {
+                    "ID": "hip-type"
+                },
+                {
+                    "ID": "teeth"
+                },
+                {
+                    "ID": "length-meters"
+                },
+                {
+                    "ID": "height-meters"
+                },
+                {
+                    "ID": "weight-kilograms"
+                },
+                {
+                    "ID": "no-of-legs-used-for-walking"
+                },
+                {
+                    "ID": "continent"
+                },
+                {
+                    "ID": "geological-period"
+                },
+                {
+                    "ID": "millions-of-years-ago-when-the-dinosaur-lived"
+                }
+            ],
+            "filters": {
+                "excludedCaseIndices": [],
+                "sampledCaseIndices": [],
+                "attributeFilters": {}
             },
-            "dataSet":{
-                    "attributes":[
-                            {"ID":"attribute-a"},
-                            {"ID":"attribute-b"}
-                    ],
-                    "filters":{
-                        "excludedCaseIndices":[],"attributeFilters":{}
-                    },
-                    "selectedCases":[],
-                    "selectedCategories":[],
-                    "orderByAttributeId":"attribute-a",
-                    "selectedAttributeId":"attribute-a"
-            }
+            "selectedCases": [],
+            "selectedCategories": [],
+            "selectedAttributeId": "hip-type"
         },
         "toolbar": {
             "toolbarItems": [
@@ -470,7 +534,7 @@ tuvaDataTools.actions.getMetaData();
                     <td>
 <pre>
 <code class="language-html" data-lang="html">
-{"attributeID":"attribute-a"}
+{"attributeID":"length-meters"}
 </code>
 </pre>
 <span>Dictionary value with attribute id on the X Axis. If there are more than one attribute on axis, it will be something like below -</span>
@@ -478,8 +542,8 @@ tuvaDataTools.actions.getMetaData();
 <code class="language-html" data-lang="html">
 {
     "allAttributeIDs": [
-        "attribute-a",
-        "attribute-b"
+        "length-meters",
+        "height-meters"
     ]
 }
 </code></pre>
@@ -497,7 +561,7 @@ tuvaDataTools.actions.getMetaData();
                     <td>
 <pre>
 <code class="language-html" data-lang="html">
-{"attributeID":"attribute-b"}
+{"attributeID":"height-meters"}
 </code>
 </pre>
 <span>Dictionary value with attribute id on the Y Axis. If there are more than one attribute on axis, it will be something like below -</span>
@@ -505,8 +569,8 @@ tuvaDataTools.actions.getMetaData();
 <code class="language-html" data-lang="html">
 {
     "allAttributeIDs": [
-        "attribute-b",
-        "attribute-a"
+        "height-meters",
+        "length-meters"
     ]
 }
 </code></pre>
@@ -524,7 +588,7 @@ tuvaDataTools.actions.getMetaData();
                     <td>
 <pre>
 <code class="language-html" data-lang="html">
-{"chartTitleText":"Bar Chart"}
+{"chartTitleText":"Scatter Plot"}
 </code>
 </pre>
 <span>Title of the chart given by the user. It also puts automatic value on click of the type of the plot to make it easy for end user.</span>
@@ -535,7 +599,7 @@ tuvaDataTools.actions.getMetaData();
                     <td>
 <pre>
 <code class="language-html" data-lang="html">
-{"legendThickness":138.02}
+{"legendThickness":100}
 </code>
 </pre>
 <span>Thickness of the legend view, as its streatchable. If you are looking for color by attribute, you can find it in Dataset field.</span>
@@ -546,17 +610,32 @@ tuvaDataTools.actions.getMetaData();
                     <td>
 <pre>
 <code class="language-html" data-lang="html">
-{
-    "plotElements":[
-        {"primaryType":"controlsUnstackedBarChart","needsDefaultTitle":false},
-        {"primaryType":"controlsCount",
-            "controlsCellCount":false,
-            "controlsSectionCount":true,"controlsSectionSum":false}
-    ]
-}
+"plotShaper": {
+        "plotElements": [
+            {
+                "primaryType": "controlsDotPlot",
+                "needsDefaultTitle": false
+            },
+            {
+                "primaryType": "controlsDiagRefLine",
+                "lines": [
+                    {
+                        "normal": {
+                            "x1": 0,
+                            "y1": 0,
+                            "x2": 0.79125,
+                            "y2": 0.9647058823529412
+                        },
+                        "color": "#4dc00e"
+                    }
+                ]
+            }
+        ]
+    },
+
 </code>
 </pre>
-<span>PlotShaper can have multiple elements, as it shows you what type of plot it is, and what other stats functions are enabled on the plot. In above example it shows the plot is UnStacked Bar Chart, and in stats Count is enabled, and also Section Count, which shows count by each section, based on colored attribute. Below are few possible values for primaryType - </span>
+<span>PlotShaper can have multiple elements, as it shows you what type of plot it is, and what other stats functions are enabled on the plot. In above example it shows the plot is Scatter Plot, and in stats Diagonal Reference line is enabled. Below are few possible values for primaryType - </span>
 <div>&nbsp;</div>
 <table>
     <tr>
@@ -671,31 +750,67 @@ tuvaDataTools.actions.getMetaData();
                     <td>
 <pre>
 <code class="language-html" data-lang="html">
-{
-        "attributes":[
-                {"ID":"attribute-a"},
-                {"ID":"attribute-b"}
+ "dataSet": {
+        "attributes": [
+            {
+                "ID": "id"
+            },
+            {
+                "ID": "name"
+            },
+            {
+                "ID": "diet"
+            },
+            {
+                "ID": "group"
+            },
+            {
+                "ID": "hip-type"
+            },
+            {
+                "ID": "teeth"
+            },
+            {
+                "ID": "length-meters"
+            },
+            {
+                "ID": "height-meters"
+            },
+            {
+                "ID": "weight-kilograms"
+            },
+            {
+                "ID": "no-of-legs-used-for-walking"
+            },
+            {
+                "ID": "continent"
+            },
+            {
+                "ID": "geological-period"
+            },
+            {
+                "ID": "millions-of-years-ago-when-the-dinosaur-lived"
+            }
         ],
-        "filters":{
-            "excludedCaseIndices":[],"attributeFilters":{}
+        "filters": {
+            "excludedCaseIndices": [],
+            "sampledCaseIndices": [],
+            "attributeFilters": {}
         },
-        "selectedCases":[],
-        "selectedCategories":[],
-        "orderByAttributeId":"attribute-a",
-        "selectedAttributeId":"attribute-a"
-}
+        "selectedCases": [],
+        "selectedCategories": [],
+        "selectedAttributeId": "hip-type"
+    },
 </code>
 </pre>
 <span>It includes dataset attributes, dictionary by Id (if change in data type), filters to show if dataset in current state is filtered by group of categories (Selected or on axis), Selected Cases to show the number of cases selected, Order by Attribute Id, and selected Attribute Id. </span>
 <div>&nbsp;</div>
 </td>
 </tr>
-
             </tbody>
         </table>
     </figure>
 </div>
-
                             <div>Explanation for each of the fields of the field <span class="badge badge-secondary">toolbar</span> at plot state</div>
                             <div class="code">
                                 <figure class="highlight">

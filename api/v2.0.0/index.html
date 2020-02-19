@@ -340,6 +340,79 @@ tuvaDataTools.actions.changeTheme('reverse-contrast');
                             </div>
                         </div>
                         <div>
+                            <p><strong>setGridLines( value )</strong>:&nbsp; For the numerical attributes on the axis you can have major and minor grid lines in the plot.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+// Possible values are: true, false
+tuvaDataTools.actions.setGridLines(true);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>setStatsLabels( value )</strong>:&nbsp; When stats like mean, mode, median enabled on the plot, you can have explicit lable displayed. By default its not going to display explicitly.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+// Possible values are: true, false
+tuvaDataTools.actions.setStatsLabels(true);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>setAttributeKeyboardSupport( theme )</strong>:&nbsp; By defautl case card displays edit icon as last column, which allows user to edit the attribute details and allows to filter range for numerical or filter categories for categorical attribute.
+                                <br><br>Enabling Attribute Keyboard support allows to have dropdown control in case card, which then allows user to navigate to more advance options at the attribute level. e.g. Edit, Add to X Axis, Add to Y Axis, Color by Attribute, Order by Attribute.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+// Possible values are: true, false
+tuvaDataTools.actions.setAttributeKeyboardSupport(true);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>setAnimation( theme )</strong>:&nbsp; If animation is too distractive to a user, they can choose to turn it off. In some cases when number of data points are too many, tools automatically opt for animation off to provide better experience.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+// Possible values are: true, false
+tuvaDataTools.actions.setAnimation(true);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>setCaseIconSize( value )</strong>:&nbsp; You can choose the size/radius of the case. Currently at some level its dynamic, if there are way too many cases, the size is smaller otherwisee its meidum to large icons</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+// Possible case size values are: 0 (standard - default), 5, 10, 15, 20, 40, 80
+tuvaDataTools.actions.setCaseIconSize(10);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p><strong>setFontSize( value )</strong>:&nbsp; It allows to set the font size for the visualization area.</p>
+                            <div class="code">
+<figure class="highlight">
+    <pre><code class="language-html" data-lang="html">
+// Possible values are: 1,1.2,1.3 its font size multiplier
+tuvaDataTools.actions.setFontSize(1.2);
+    </code></pre>
+</figure>
+
+                            </div>
+                        </div>
+                        <div>
                             <p><strong>resize()</strong>:&nbsp; Adjust the visualization environment based on the window resize, or post zoom action.</p>
                             <div class="code">
 <figure class="highlight">

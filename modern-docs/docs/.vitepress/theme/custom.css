@@ -1,8 +1,13 @@
 /* Custom styles for the theme */
 :root {
-  --vp-c-brand: #3eaf7c;
-  --vp-c-brand-light: #4abf8a;
-  --vp-c-brand-dark: #33a06f;
+  --vp-c-brand: #004445;
+  --vp-c-brand-light: #006668;
+  --vp-c-brand-dark: #002223;
+
+  --vp-c-indigo-1: #004445;
+  --vp-c-indigo-2: #005556;
+  --vp-c-indigo-3: #006667;
+  --vp-c-indigo-soft: rgba(0, 68, 69, 0.14);
 }
 
 .playground-page .VPContent {
@@ -100,16 +105,74 @@
 /* Expand content area when right sidebar is hidden */
 @media (min-width: 960px) {
   .quick-start-page .VPDoc .container {
-    max-width: calc(100% - 256px) !important;
+    max-width: 100% !important;
     padding-right: 64px !important;
     padding-left: 24px !important;
+  }
+  
+  .quick-start-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .quick-start-page .VPDoc .content-container {
+    max-width: 100% !important;
   }
 }
 
 @media (min-width: 1280px) {
   .quick-start-page .VPDoc .container {
-    max-width: calc(100% - 288px) !important;
+    max-width: 100% !important;
     padding-right: 96px !important;
     padding-left: 32px !important;
+  }
+  
+  .quick-start-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .quick-start-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+/* Developer Tools page - hide right sidebar and expand content */
+.developer-tools-page .aside {
+  display: none !important;
+}
+
+.developer-tools-page .VPDocAside {
+  display: none !important;
+}
+
+/* Expand content area when right sidebar is hidden */
+@media (min-width: 960px) {
+  .developer-tools-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 64px !important;
+    padding-left: 24px !important;
+  }
+  
+  .developer-tools-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .developer-tools-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .developer-tools-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 96px !important;
+    padding-left: 32px !important;
+  }
+  
+  .developer-tools-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .developer-tools-page .VPDoc .content-container {
+    max-width: 100% !important;
   }
 }

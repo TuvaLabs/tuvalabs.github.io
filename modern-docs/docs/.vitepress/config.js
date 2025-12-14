@@ -2,6 +2,7 @@ export default {
   title: 'Tuva Data Tools',
   description: 'API Documentation and Guides',
   head: [
+    ['link', { rel: 'icon', href: '/assets/images/favicon.ico' }],
     ['script', { src: 'https://code.jquery.com/jquery-3.2.1.min.js' }],
     ['script', { src: 'https://unpkg.com/react@18/umd/react.development.js' }],
     ['script', { src: 'https://unpkg.com/react-dom@18/umd/react-dom.development.js', defer: true }],
@@ -9,12 +10,13 @@ export default {
     ['script', { src: '/assets/tools/tuva-data-tools.min.js', defer: true }]
   ],
   themeConfig: {
+    logo: { light: '/assets/images/tuva-logo-green.png', dark: '/assets/images/tuva-logo-white.png' },
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/quick-start' },
       { text: 'API', link: '/api/' },
       { text: 'Playground', link: '/playground' },
-      { text: 'v2.3.0', link: 'https://tuvalabs.com/changelogs/data-exploration/#v2.3.0' }
+      { text: 'Changelog', link: 'https://tuvalabs.com/changelogs/data-exploration/' }
     ],
     outline: {
       level: [2, 3],
@@ -25,23 +27,35 @@ export default {
         {
           text: 'Getting Started',
           items: [
-            {
-              text: 'Quick Start',
+            { 
+              text: 'Quick Start', 
               link: '/guide/quick-start',
-              collapsed: false,
               items: [
                 { text: 'Prerequisites', link: '/guide/quick-start#prerequisites' },
-                { text: 'Step 1: Import Dependencies', link: '/guide/quick-start#step-1-import-dependencies' },
-                { text: 'Step 2: Add Tuva Data Tools', link: '/guide/quick-start#step-2-add-tuva-data-tools' },
-                { text: 'Step 3: Prepare Your Data', link: '/guide/quick-start#step-3-prepare-your-data' },
-                { text: 'Step 4: Create the Component', link: '/guide/quick-start#step-4-create-the-component' },
-                { text: 'Step 5: Using the API', link: '/guide/quick-start#step-5-using-the-api' },
+                { text: 'Import Dependencies', link: '/guide/quick-start#step-1-import-dependencies' },
+                { text: 'Add Tuva Data Tools', link: '/guide/quick-start#step-2-add-tuva-data-tools' },
+                { text: 'Prepare Your Data', link: '/guide/quick-start#step-3-prepare-your-data' },
+                { text: 'Create the Component', link: '/guide/quick-start#step-4-create-the-component' },
+                { text: 'Using the API', link: '/guide/quick-start#step-5-using-the-api' },
                 { text: 'Try It Out', link: '/guide/quick-start#try-it-out' },
                 { text: 'Complete Example', link: '/guide/quick-start#complete-example' },
                 { text: 'Next Steps', link: '/guide/quick-start#next-steps' }
               ]
             },
-            { text: 'Developer Tools', link: '/guide/developer-tools' }
+            { 
+              text: 'Developer Tools', 
+              link: '/guide/developer-tools',
+              items: [
+                { text: 'Code Snippets', link: '/guide/developer-tools#code-snippets' },
+                { text: 'Browser Console Helpers', link: '/guide/developer-tools#browser-console-helpers' },
+                { text: 'React Integration Examples', link: '/guide/developer-tools#react-integration-examples' },
+                { text: 'Performance Tips', link: '/guide/developer-tools#performance-tips' },
+                { text: 'Common Patterns', link: '/guide/developer-tools#common-patterns' },
+                { text: 'Testing Utilities', link: '/guide/developer-tools#testing-utilities' },
+                { text: 'Troubleshooting', link: '/guide/developer-tools#troubleshooting' },
+                { text: 'Additional Resources', link: '/guide/developer-tools#additional-resources' }
+              ]
+            }
           ]
         }
       ],
@@ -75,7 +89,7 @@ export default {
     },
     footer: {
       message: 'Tuva Data Tools Documentation',
-      copyright: 'Copyright © Tuva Labs'
+      copyright: `© ${new Date().getFullYear()} Tuva Labs Inc.`
     }
   }
 }

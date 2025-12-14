@@ -1,5 +1,6 @@
 ---
 outline: deep
+pageClass: developer-tools-page
 ---
 
 # Developer Tools & Resources

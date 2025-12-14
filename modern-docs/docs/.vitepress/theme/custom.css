@@ -40,3 +40,76 @@
   max-width: 100% !important;
   padding: 0 !important;
 }
+
+.playground-page .playground-header {
+  padding: 1.25rem 2rem 1rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  margin-bottom: 0;
+}
+
+.playground-page .playground-title {
+  font-size: 1.25rem !important;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0 !important;
+  line-height: 1.4;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.01em;
+}
+
+.playground-page .playground-description {
+  font-size: 0.875rem;
+  color: var(--vp-c-text-2);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.playground-page .live-editor {
+  margin: 0 !important;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+@media (min-width: 768px) {
+  .playground-page .live-editor {
+    height: calc(100vh - 160px);
+    min-height: 700px;
+  }
+  
+  .playground-page .dom-preview {
+    min-height: 450px;
+    flex: 1 1 auto;
+  }
+  
+  .playground-page .output-container {
+    min-height: 0;
+  }
+}
+
+/* Quick Start page - hide right sidebar and expand content */
+.quick-start-page .aside {
+  display: none !important;
+}
+
+.quick-start-page .VPDocAside {
+  display: none !important;
+}
+
+/* Expand content area when right sidebar is hidden */
+@media (min-width: 960px) {
+  .quick-start-page .VPDoc .container {
+    max-width: calc(100% - 256px) !important;
+    padding-right: 64px !important;
+    padding-left: 24px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .quick-start-page .VPDoc .container {
+    max-width: calc(100% - 288px) !important;
+    padding-right: 96px !important;
+    padding-left: 32px !important;
+  }
+}

@@ -4,9 +4,10 @@ aside: false
 pageClass: playground-page
 ---
 
-# Playground
-
-Try out the JavaScript code below. You can edit the code on the left and click "Run" to see the result on the right.
+<div class="playground-header">
+  <h1 class="playground-title">Playground</h1>
+  <p class="playground-description">Try out the JavaScript code below. You can edit the code on the left and click "Run" to see the result on the right.</p>
+</div>
 
 <script setup>
 const demoCode = `// Define the data
@@ -36,19 +37,23 @@ const metaData = {
 };
 
 // Render the TuvaDataTools component
-// We use React.createElement because we are not using JSX here
-const element = React.createElement(TuvaDataTools, {
-  columnIds: columnIds,
-  columnNames: columnNames,
-  rowData: rowData,
-  metaData: metaData,
-  // Add any other required props here
-});
+// ReactDOM.render returns the component instance which has an 'actions' property
+const tuvaDataTools = ReactDOM.render(
+  React.createElement(TuvaDataTools, {
+    columnIds: columnIds,
+    columnNames: columnNames,
+    rowData: rowData,
+    metaData: metaData
+  }),
+  root
+);
 
-// The 'root' element is automatically provided by the playground environment
-const rootInstance = ReactDOM.createRoot(root);
-rootInstance.render(element);
-console.log('Rendered successfully!');`
+console.log('Rendered successfully!');
+if (tuvaDataTools && tuvaDataTools.actions) {
+  console.log('Available actions:', Object.keys(tuvaDataTools.actions));
+} else {
+  console.log('Component instance created but actions not yet available');
+}`
 </script>
 
 <LiveEditor :initialCode="demoCode" />

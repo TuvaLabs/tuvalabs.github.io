@@ -81,9 +81,9 @@ export default {
         }
       ]
     },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/TuvaLabs/tuvalabs.github.io' }
-    ],
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/TuvaLabs/tuvalabs.github.io' }
+    // ],
     search: {
       provider: 'local'
     },

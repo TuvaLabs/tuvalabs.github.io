@@ -1,5 +1,5 @@
 export default {
-  title: 'Tuva Data Tools',
+  title: 'Data Tools',
   description: 'API Documentation and Guides',
   head: [
     ['link', { rel: 'icon', href: '/assets/images/favicon.ico' }],
@@ -64,7 +64,24 @@ export default {
           text: 'API Reference',
           items: [
             { text: 'Overview', link: '/api/' },
-            { text: 'Configuration', link: '/api/configuration' },
+            {
+              text: 'Configuration',
+              link: '/api/configuration',
+              collapsed: false,
+              items: [
+                { text: 'changeTheme', link: '/api/configuration#changetheme' },
+                { text: 'setGridLines', link: '/api/configuration#setgridlines' },
+                { text: 'setFontSize', link: '/api/configuration#setfontsize' },
+                { text: 'setCaseIconSize', link: '/api/configuration#setcaseiconsize' },
+                { text: 'setAnimation', link: '/api/configuration#setanimation' },
+                { text: 'setPlotTitleVisible', link: '/api/configuration#setplottitlevisible' },
+                { text: 'setStatsLabels', link: '/api/configuration#setstatslabels' },
+                { text: 'setAttributeKeyboardSupport', link: '/api/configuration#setattributekeyboardsupport' },
+                { text: 'changeMode', link: '/api/configuration#changemode' },
+                { text: 'Other Configuration Methods', link: '/api/configuration#other-configuration-methods' },
+                { text: 'Complete Configuration Example', link: '/api/configuration#complete-configuration-example' }
+              ]
+            },
             { text: 'Data Methods', link: '/api/data' },
             { text: 'Plot State', link: '/api/plot-state' },
             { text: 'Utility Methods', link: '/api/utility' }

@@ -5,9 +5,9 @@ export default {
     ['link', { rel: 'icon', href: '/assets/images/favicon.ico' }],
     ['script', { src: 'https://code.jquery.com/jquery-3.2.1.min.js' }],
     ['script', { src: 'https://unpkg.com/react@18/umd/react.development.js' }],
-    ['script', { src: 'https://unpkg.com/react-dom@18/umd/react-dom.development.js', defer: true }],
+    ['script', { src: 'https://unpkg.com/react-dom@18/umd/react-dom.development.js', defer: false }],
     ['link', { rel: 'stylesheet', href: 'https://tools.tuvalabs.com/data-exploration/a11y-files/tuva-data-tools.min.css' }],
-    ['script', { src: 'https://tools.tuvalabs.com/data-exploration/a11y-files/tuva-data-tools.min.js', defer: true }]
+    ['script', { src: 'https://tools.tuvalabs.com/data-exploration/a11y-files/tuva-data-tools.min.js', defer: false }]
   ],
   themeConfig: {
     logo: { light: '/assets/images/tuva-logo-green.png', dark: '/assets/images/tuva-logo-white.png' },

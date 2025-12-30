@@ -10,6 +10,18 @@
   --vp-c-indigo-soft: rgba(0, 68, 69, 0.14);
 }
 
+/* Dark mode brand colors */
+.dark {
+  --vp-c-brand: #fec907;
+  --vp-c-brand-light: #ffd43b;
+  --vp-c-brand-dark: #e6b400;
+
+  --vp-c-indigo-1: #fec907;
+  --vp-c-indigo-2: #ffd43b;
+  --vp-c-indigo-3: #fec907;
+  --vp-c-indigo-soft: rgba(254, 201, 7, 0.14);
+}
+
 /* Align logo and title in header */
 .VPNavBarTitle {
   display: flex !important;

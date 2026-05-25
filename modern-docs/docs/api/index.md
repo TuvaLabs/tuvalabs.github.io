@@ -36,7 +36,7 @@ Control the visual appearance and behavior of your data tool.
 | `changeTheme(theme)` | Switch between themes (tuva, yellow-on-blue, reverse-contrast, black-on-rose) |
 | `setGridLines(value)` | Toggle grid line visibility |
 | `setFontSize(value)` | Adjust text size (multiplier: 1, 1.2, 1.3) |
-| `setCaseIconSize(value)` | Set case icon dimensions (0, 5, 10, 15, 20, 40, 80) |
+| `setCaseSize(value)` | Set case icon dimensions (0, 5, 10, 15, 20, 40, 80) |
 | `setAnimation(value)` | Enable/disable animations |
 | `setPlotTitleVisible(value)` | Show/hide plot title |
 | `setStatsLabels(value)` | Show/hide statistics labels |
@@ -48,10 +48,12 @@ Retrieve and manipulate the underlying dataset.
 
 | Method | Description |
 |--------|-------------|
-| `getRawData()` | Get the complete dataset |
+| `getRawData()` | Get the complete dataset (header row + data rows) |
 | `getColumnIds()` | Retrieve column identifiers |
 | `getColumnNames()` | Get human-readable column names |
 | `appendRawData(rows)` | Add new rows to the dataset |
+| `setRawData(rows)` | Replace all rows, keeping the column schema |
+| `clearData()` | Remove all rows |
 | `getMetaData()` | Access field metadata |
 | `getDirtyRawData()` | Get modified (unsaved) data |
 
@@ -79,6 +81,19 @@ Lifecycle and localization controls.
 | `setLanguage(language)` | Change the UI language |
 | `openTour()` | Launch the interactive tour |
 
+### [Iframe Bridge](/api/iframe)
+
+Embed TuvaDataTools in an iframe and talk to it from the parent window via `window.postMessage`.
+
+| Item | Description |
+|------|-------------|
+| `usePostMessageBridge({...})` | React hook that wires the iframe to a parent window |
+| `datasetSave` / `datasetLoad` | Read or write the full dataset (new structured API) |
+| `plotStateGet` / `plotStateSet` | Read or write the plot state |
+| `plotImageGet` | Request a PNG screenshot of the plot |
+| `altTextGet` / `altTextSet` | Read or write the alt text |
+| `changeListener` | Subscribe to user-driven plot changes |
+
 ## Type Definitions
 
 ```typescript
@@ -86,10 +101,9 @@ interface TuvaDataToolsInstance {
   actions: {
     // Configuration
     changeTheme: (theme: 'tuva' | 'yellow-on-blue' | 'reverse-contrast' | 'black-on-rose') => void;
-    changeMode: (mode: 'elem' | 'middle' | 'high' | '') => void;
     setGridLines: (value: boolean) => void;
     setFontSize: (value: number) => void; // multiplier: 1, 1.2, 1.3
-    setCaseIconSize: (value: number) => void; // 0, 5, 10, 15, 20, 40, 80
+    setCaseSize: (value: number) => void; // 0, 5, 10, 15, 20, 40, 80
     setAnimation: (value: boolean) => void;
     setPlotTitleVisible: (value: boolean) => void;
     setDisplayAttributeSetting: (value: object) => void;
@@ -100,10 +114,12 @@ interface TuvaDataToolsInstance {
     setPlotReset: (value: boolean) => void;
 
     // Data
-    getRawData: () => any[][];
+    getRawData: () => any[][]; // [headerRow, ...dataRows] — data rows omit the Case column
     getColumnIds: () => string[];
     getColumnNames: () => string[];
-    appendRawData: (rows: any[][]) => void;
+    appendRawData: (rows: any[][]) => void;  // rows omit the Case column
+    setRawData: (rows: any[][]) => void;     // replaces existing rows in place
+    clearData: () => void;
     getMetaData: () => MetaData;
     getDirtyRawData: () => any[][];
 

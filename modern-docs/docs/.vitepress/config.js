@@ -72,19 +72,32 @@ export default {
                 { text: 'changeTheme', link: '/api/configuration#changetheme' },
                 { text: 'setGridLines', link: '/api/configuration#setgridlines' },
                 { text: 'setFontSize', link: '/api/configuration#setfontsize' },
-                { text: 'setCaseIconSize', link: '/api/configuration#setcaseiconsize' },
+                { text: 'setCaseSize', link: '/api/configuration#setcasesize' },
                 { text: 'setAnimation', link: '/api/configuration#setanimation' },
                 { text: 'setPlotTitleVisible', link: '/api/configuration#setplottitlevisible' },
                 { text: 'setStatsLabels', link: '/api/configuration#setstatslabels' },
                 { text: 'setAttributeKeyboardSupport', link: '/api/configuration#setattributekeyboardsupport' },
-                { text: 'changeMode', link: '/api/configuration#changemode' },
                 { text: 'Other Configuration Methods', link: '/api/configuration#other-configuration-methods' },
                 { text: 'Complete Configuration Example', link: '/api/configuration#complete-configuration-example' }
               ]
             },
             { text: 'Data Methods', link: '/api/data' },
             { text: 'Plot State', link: '/api/plot-state' },
-            { text: 'Utility Methods', link: '/api/utility' }
+            { text: 'Utility Methods', link: '/api/utility' },
+            {
+              text: 'Iframe Bridge',
+              link: '/api/iframe',
+              collapsed: false,
+              items: [
+                { text: 'Wiring the hook', link: '/api/iframe#wiring-the-hook' },
+                { text: 'Options', link: '/api/iframe#options' },
+                { text: 'Return value', link: '/api/iframe#return-value' },
+                { text: 'Message protocol — new API', link: '/api/iframe#message-protocol-new-api' },
+                { text: 'Parent-side recipe', link: '/api/iframe#parent-side-recipe' },
+                { text: 'Message protocol — legacy API', link: '/api/iframe#message-protocol-legacy-api' },
+                { text: 'Notes & gotchas', link: '/api/iframe#notes-gotchas' }
+              ]
+            }
           ]
         }
       ],

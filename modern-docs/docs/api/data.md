@@ -120,12 +120,11 @@ setTimeout(() => {
   btn.textContent = 'Add New Row';
   btn.onclick = () => {
     if (tuvaDataTools && tuvaDataTools.actions) {
-      const currentData = tuvaDataTools.actions.getRawData();
-      const newId = currentData.length + 1;
-      const newRow = [newId, 'New Student', '12', String(Math.floor(Math.random() * 20) + 80)];
+      // Each row contains values for non-Case columns; the Case number is auto-assigned.
+      const newRow = ['New Student', '12', String(Math.floor(Math.random() * 20) + 80)];
       tuvaDataTools.actions.appendRawData([newRow]);
       console.log('Added row:', newRow);
-      console.log('Total rows now:', tuvaDataTools.actions.getRawData().length);
+      console.log('Total rows now (incl. header):', tuvaDataTools.actions.getRawData().length);
     }
   };
   btn.style.cssText = 'margin: 10px 0; padding: 8px 16px;';
@@ -238,16 +237,19 @@ appendRawData(rows: any[][]): void
 ### Example
 
 ```javascript
+// Each row supplies values for the non-Case columns in column order.
+// Case numbers are auto-assigned by appendRawData — do not include them.
+
 // Add a single row
 tuvaDataTools.actions.appendRawData([
-  [4, 'David', '14', '95']
+  ['David', '14', '95']
 ]);
 
 // Add multiple rows
 tuvaDataTools.actions.appendRawData([
-  [5, 'Eve', '13', '87'],
-  [6, 'Frank', '12', '91'],
-  [7, 'Grace', '14', '89']
+  ['Eve',   '13', '87'],
+  ['Frank', '12', '91'],
+  ['Grace', '14', '89']
 ]);
 ```
 
@@ -258,6 +260,59 @@ Ensure the new rows match the existing column structure. Mismatched columns may 
 ### Try It Out
 
 <LiveEditor :initialCode="appendRawDataCode" />
+
+---
+
+## setRawData
+
+Replace the entire row dataset in place, preserving the current column schema and plot state.
+
+```typescript
+setRawData(rows: any[][]): void
+```
+
+### Parameters
+
+| Name | Type | Description |
+|------|------|-------------|
+| `rows` | `any[][]` | Replacement rows. Each row should match the existing column count and **omit the Case column** — case numbers are reassigned automatically. |
+
+### Example
+
+```javascript
+// Replace all rows with a new set
+tuvaDataTools.actions.setRawData([
+  ['Alice',   '12', '85'],
+  ['Bob',     '13', '90'],
+  ['Charlie', '12', '88'],
+]);
+```
+
+::: tip
+Use `setRawData` when the column schema (column IDs, names, metadata) is unchanged and you only need to swap the rows. If the schema also needs to change, re-mount the component with new props instead.
+:::
+
+---
+
+## clearData
+
+Remove all rows from the dataset, keeping the column schema and plot configuration intact.
+
+```typescript
+clearData(): void
+```
+
+### Example
+
+```javascript
+// Wipe all rows
+tuvaDataTools.actions.clearData();
+
+// After clearData, you can stream rows in again with appendRawData
+tuvaDataTools.actions.appendRawData([
+  ['Alice', '12', '85'],
+]);
+```
 
 ---
 

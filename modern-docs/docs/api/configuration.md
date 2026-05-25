@@ -228,12 +228,12 @@ setTimeout(() => {
   select.value = '0';
   select.onchange = (e) => {
     // Check if API is available when user changes the value
-    if (tuvaDataTools && tuvaDataTools.actions && tuvaDataTools.actions.setCaseIconSize) {
+    if (tuvaDataTools && tuvaDataTools.actions && tuvaDataTools.actions.setCaseSize) {
       const size = parseInt(e.target.value, 10);
-      tuvaDataTools.actions.setCaseIconSize(size);
+      tuvaDataTools.actions.setCaseSize(size);
       console.log('Case icon size set to:', size);
     } else {
-      console.error('setCaseIconSize not available. Available actions:', tuvaDataTools?.actions ? Object.keys(tuvaDataTools.actions) : 'none');
+      console.error('setCaseSize not available. Available actions:', tuvaDataTools?.actions ? Object.keys(tuvaDataTools.actions) : 'none');
     }
   };
   select.style.cssText = 'padding: 0.4rem 0.75rem; border: 1px solid var(--vp-c-divider); border-radius: 4px; background-color: var(--vp-c-bg); color: var(--vp-c-text-1); font-size: 0.85rem; cursor: pointer; min-width: 140px;';
@@ -412,12 +412,12 @@ tuvaDataTools.actions.setFontSize(1.3);
 
 ---
 
-## setCaseIconSize
+## setCaseSize
 
 Set the size of case icons in the visualization.
 
 ```typescript
-setCaseIconSize(value: number): void
+setCaseSize(value: number): void
 ```
 
 ### Parameters
@@ -430,13 +430,13 @@ setCaseIconSize(value: number): void
 
 ```javascript
 // Standard size (default)
-tuvaDataTools.actions.setCaseIconSize(0);
+tuvaDataTools.actions.setCaseSize(0);
 
 // Larger case icons
-tuvaDataTools.actions.setCaseIconSize(10);
+tuvaDataTools.actions.setCaseSize(10);
 
 // Smaller case icons for dense data
-tuvaDataTools.actions.setCaseIconSize(5);
+tuvaDataTools.actions.setCaseSize(5);
 ```
 
 ### Try It Out
@@ -547,30 +547,6 @@ tuvaDataTools.actions.setAttributeKeyboardSupport(true);
 
 ---
 
-## changeMode
-
-Change the display mode of the visualization.
-
-```typescript
-changeMode(mode: 'elem' | 'middle' | 'high' | ''): void
-```
-
-### Parameters
-
-| Name | Type | Description |
-|------|------|-------------|
-| `mode` | `'elem' \| 'middle' \| 'high' \| ''` | Display mode to apply |
-
-### Example
-
-```javascript
-tuvaDataTools.actions.changeMode('elem');
-tuvaDataTools.actions.changeMode('middle');
-tuvaDataTools.actions.changeMode('high');
-```
-
----
-
 ## Other Configuration Methods
 
 ### setDisplayAttributeSetting
@@ -630,7 +606,7 @@ setTimeout(() => {
   
   // Visual settings
   tuvaDataTools.actions.setFontSize(1.2);
-  tuvaDataTools.actions.setCaseIconSize(10);
+  tuvaDataTools.actions.setCaseSize(10);
   tuvaDataTools.actions.setGridLines(true);
   tuvaDataTools.actions.setStatsLabels(true);
   

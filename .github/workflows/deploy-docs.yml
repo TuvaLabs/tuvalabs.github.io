@@ -3,7 +3,7 @@ name: Deploy VitePress Docs to GitHub Pages
 on:
   push:
     branches:
-      - modern-docs
+      - master
   workflow_dispatch:
 
 permissions:

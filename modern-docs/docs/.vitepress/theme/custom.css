@@ -1,0 +1,254 @@
+/* Custom styles for the theme */
+:root {
+  --vp-c-brand: #004445;
+  --vp-c-brand-light: #006668;
+  --vp-c-brand-dark: #002223;
+
+  --vp-c-indigo-1: #004445;
+  --vp-c-indigo-2: #005556;
+  --vp-c-indigo-3: #006667;
+  --vp-c-indigo-soft: rgba(0, 68, 69, 0.14);
+}
+
+/* Dark mode brand colors */
+.dark {
+  --vp-c-brand: #fec907;
+  --vp-c-brand-light: #ffd43b;
+  --vp-c-brand-dark: #e6b400;
+
+  --vp-c-indigo-1: #fec907;
+  --vp-c-indigo-2: #ffd43b;
+  --vp-c-indigo-3: #fec907;
+  --vp-c-indigo-soft: rgba(254, 201, 7, 0.14);
+}
+
+/* Align logo and title in header */
+.VPNavBarTitle {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+.VPNavBarTitleLogo {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+.VPNavBarTitle .title {
+  display: flex !important;
+  align-items: center !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+.playground-page .VPContent {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.playground-page .VPContent .container {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.playground-page .VPDoc {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+.playground-page .VPDoc .container {
+  max-width: 100% !important;
+  padding: 0 !important;
+  display: block !important; /* Override flex/grid if necessary */
+}
+
+.playground-page .aside {
+  display: none !important;
+}
+
+.playground-page .content {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.playground-page .content-container {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.playground-page .playground-header {
+  padding: 1.25rem 2rem 1rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  margin-bottom: 0;
+}
+
+.playground-page .playground-title {
+  font-size: 1.25rem !important;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0 !important;
+  line-height: 1.4;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.01em;
+}
+
+.playground-page .playground-description {
+  font-size: 0.875rem;
+  color: var(--vp-c-text-2);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.playground-page .live-editor {
+  margin: 0 !important;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+@media (min-width: 768px) {
+  .playground-page .live-editor {
+    height: calc(100vh - 160px);
+    min-height: 700px;
+  }
+  
+  .playground-page .dom-preview {
+    min-height: 450px;
+    flex: 1 1 auto;
+  }
+  
+  .playground-page .output-container {
+    min-height: 0;
+  }
+}
+
+/* Quick Start page - hide right sidebar and expand content */
+.quick-start-page .aside {
+  display: none !important;
+}
+
+.quick-start-page .VPDocAside {
+  display: none !important;
+}
+
+/* Expand content area when right sidebar is hidden */
+@media (min-width: 960px) {
+  .quick-start-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 64px !important;
+    padding-left: 24px !important;
+  }
+  
+  .quick-start-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .quick-start-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .quick-start-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 96px !important;
+    padding-left: 32px !important;
+  }
+  
+  .quick-start-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .quick-start-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+/* Developer Tools page - hide right sidebar and expand content */
+.developer-tools-page .aside {
+  display: none !important;
+}
+
+.developer-tools-page .VPDocAside {
+  display: none !important;
+}
+
+/* Expand content area when right sidebar is hidden */
+@media (min-width: 960px) {
+  .developer-tools-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 64px !important;
+    padding-left: 24px !important;
+  }
+  
+  .developer-tools-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .developer-tools-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .developer-tools-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 96px !important;
+    padding-left: 32px !important;
+  }
+  
+  .developer-tools-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .developer-tools-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+/* Configuration page - hide right sidebar and expand content */
+.configuration-page .aside {
+  display: none !important;
+}
+
+.configuration-page .VPDocAside {
+  display: none !important;
+}
+
+/* Expand content area when right sidebar is hidden */
+@media (min-width: 960px) {
+  .configuration-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 64px !important;
+    padding-left: 24px !important;
+  }
+  
+  .configuration-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .configuration-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .configuration-page .VPDoc .container {
+    max-width: 100% !important;
+    padding-right: 96px !important;
+    padding-left: 32px !important;
+  }
+  
+  .configuration-page .VPDoc .content {
+    max-width: 100% !important;
+  }
+  
+  .configuration-page .VPDoc .content-container {
+    max-width: 100% !important;
+  }
+}

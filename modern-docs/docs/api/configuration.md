@@ -1,4 +1,5 @@
 ---
+description: "Configuration methods for Tuva Data Tools: theme, grid lines, font size, case size, animation, titles, stats labels and keyboard support."
 outline: false
 pageClass: configuration-page
 ---

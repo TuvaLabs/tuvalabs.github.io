@@ -1,4 +1,6 @@
 ---
+title: Playground
+description: "Interactive playground for trying the Tuva Data Tools API in the browser."
 sidebar: false
 aside: false
 pageClass: playground-page

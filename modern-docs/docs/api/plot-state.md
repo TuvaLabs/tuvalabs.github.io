@@ -1,4 +1,5 @@
 ---
+description: "Save, restore and validate Tuva Data Tools plot state (getPlotState / setPlotState), with the JSON Schema at /schema/plot-state.schema.json."
 outline: deep
 ---
 

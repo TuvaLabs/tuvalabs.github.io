@@ -1,4 +1,5 @@
 ---
+description: "Overview of the Tuva Data Tools actions API: configuration, data, plot state and utility methods on the component instance."
 outline: deep
 ---
 

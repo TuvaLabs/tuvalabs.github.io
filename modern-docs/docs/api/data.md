@@ -1,4 +1,5 @@
 ---
+description: "Data methods for Tuva Data Tools: getRawData, setRawData, appendRawData, clearData, column ids and names, and metadata."
 outline: deep
 ---
 

@@ -1,0 +1,258 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/plotState",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "plotview",
+    "version"
+  ],
+  "properties": {
+    "plotview": {
+      "$id": "#/properties/plotview",
+      "type": "object",
+      "title": "The Plotview Schema",
+      "required": [
+        "xAxisView",
+        "yAxisView",
+        "topView",
+        "legendView",
+        "plotShaper",
+        "dataSet"
+      ],
+      "properties": {
+        "xAxisView": {
+          "$id": "#/properties/plotview/properties/xAxisView",
+          "type": "object",
+          "title": "The Xaxisview Schema",
+          "optional": [
+            "attributeID"
+          ],
+          "properties": {
+            "attributeID": {
+              "$id": "#/properties/plotview/properties/xAxisView/properties/attributeID",
+              "type": "array",
+              "title": "The Attributeid Schema",
+              "items": {
+                "$id": "#/properties/plotview/properties/xAxisView/properties/attributeID/items",
+                "type": "string",
+                "title": "The Items Schema",
+                "default": "",
+                "examples": [
+                  "body-weight-grams"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "yAxisView": {
+          "$id": "#/properties/plotview/properties/yAxisView",
+          "type": "object",
+          "title": "The Yaxisview Schema",
+          "optional": [
+            "attributeID"
+          ],
+          "properties": {
+            "attributeID": {
+              "$id": "#/properties/plotview/properties/yAxisView/properties/attributeID",
+              "type": "array",
+              "title": "The Attributeid Schema",
+              "items": {
+                "$id": "#/properties/plotview/properties/yAxisView/properties/attributeID/items",
+                "type": "string",
+                "title": "The Items Schema",
+                "default": "",
+                "examples": [
+                  "body-length-millimeters"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "topView": {
+          "$id": "#/properties/plotview/properties/topView",
+          "type": "object",
+          "title": "The Topview Schema",
+          "required": [
+            "chartTitleText"
+          ],
+          "properties": {
+            "chartTitleText": {
+              "$id": "#/properties/plotview/properties/topView/properties/chartTitleText",
+              "type": "string",
+              "title": "The Charttitletext Schema",
+              "default": "",
+              "examples": [
+                "Scatter plot"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        },
+        "legendView": {
+          "$id": "#/properties/plotview/properties/legendView",
+          "type": "object",
+          "title": "The Legendview Schema",
+          "optional": [
+            "legendThickness"
+          ],
+          "properties": {
+            "legendThickness": {
+              "$id": "#/properties/plotview/properties/legendView/properties/legendThickness",
+              "type": "integer",
+              "title": "The Legendthickness Schema",
+              "default": 0,
+              "examples": [
+                100
+              ]
+            }
+          }
+        },
+        "plotShaper": {
+          "$id": "#/properties/plotview/properties/plotShaper",
+          "type": "object",
+          "title": "The Plotshaper Schema",
+          "required": [
+            "plotElements"
+          ],
+          "properties": {
+            "plotElements": {
+              "$id": "#/properties/plotview/properties/plotShaper/properties/plotElements",
+              "type": "array",
+              "title": "The Plotelements Schema",
+              "items": {
+                "$id": "#/properties/plotview/properties/plotShaper/properties/plotElements/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "primaryType"
+                ],
+                "properties": {
+                  "primaryType": {
+                    "$id": "#/properties/plotview/properties/plotShaper/properties/plotElements/items/properties/primaryType",
+                    "type": "string",
+                    "title": "The Primarytype Schema",
+                    "default": "",
+                    "examples": [
+                      "controlsDotPlot"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "dataSet": {
+          "$id": "#/properties/plotview/properties/dataSet",
+          "type": "object",
+          "title": "The Dataset Schema",
+          "required": [
+            "attributes",
+            "filters",
+            "selectedCases",
+            "selectedCategories",
+            "orderByAttributeId",
+            "selectedAttributeId"
+          ],
+          "properties": {
+            "attributes": {
+              "$id": "#/properties/plotview/properties/dataSet/properties/attributes",
+              "type": "array",
+              "title": "The Attributes Schema",
+              "items": {
+                "$id": "#/properties/plotview/properties/dataSet/properties/attributes/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "ID"
+                ],
+                "properties": {
+                  "ID": {
+                    "$id": "#/properties/plotview/properties/dataSet/properties/attributes/items/properties/ID",
+                    "type": "string",
+                    "title": "The Id Schema",
+                    "default": "",
+                    "examples": [
+                      "id"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            },
+            "filters": {
+              "$id": "#/properties/plotview/properties/dataSet/properties/filters",
+              "type": "object",
+              "title": "The Filters Schema",
+              "optional": [
+                "excludedCaseIndices",
+                "sampledCaseIndices",
+                "attributeFilters"
+              ],
+              "properties": {
+                "excludedCaseIndices": {
+                  "$id": "#/properties/plotview/properties/dataSet/properties/filters/properties/excludedCaseIndices",
+                  "type": "array",
+                  "title": "The Excludedcaseindices Schema"
+                },
+                "sampledCaseIndices": {
+                  "$id": "#/properties/plotview/properties/dataSet/properties/filters/properties/sampledCaseIndices",
+                  "type": "array",
+                  "title": "The Sampledcaseindices Schema"
+                },
+                "attributeFilters": {
+                  "$id": "#/properties/plotview/properties/dataSet/properties/filters/properties/attributeFilters",
+                  "type": "object",
+                  "title": "The Attributefilters Schema"
+                }
+              }
+            },
+            "selectedCases": {
+              "$id": "#/properties/plotview/properties/dataSet/properties/selectedCases",
+              "type": "array",
+              "title": "The Selectedcases Schema"
+            },
+            "selectedCategories": {
+              "$id": "#/properties/plotview/properties/dataSet/properties/selectedCategories",
+              "type": "array",
+              "title": "The Selectedcategories Schema"
+            },
+            "orderByAttributeId": {
+              "$id": "#/properties/plotview/properties/dataSet/properties/orderByAttributeId",
+              "type": "string",
+              "title": "The Orderbyattributeid Schema",
+              "default": "",
+              "examples": [
+                "gender"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "selectedAttributeId": {
+              "$id": "#/properties/plotview/properties/dataSet/properties/selectedAttributeId",
+              "type": "string",
+              "title": "The Selectedattributeid Schema",
+              "default": "",
+              "examples": [
+                "gender"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        }
+      }
+    },
+    "version": {
+      "$id": "#/properties/version",
+      "type": "integer",
+      "title": "The Version Schema",
+      "default": 0,
+      "examples": [
+        1
+      ]
+    }
+  }
+}

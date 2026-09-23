@@ -1,4 +1,5 @@
 ---
+description: "Code snippets, console helpers, React integration examples, performance tips and troubleshooting for Tuva Data Tools."
 outline: deep
 pageClass: developer-tools-page
 ---

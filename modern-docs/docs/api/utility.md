@@ -1,4 +1,5 @@
 ---
+description: "Utility methods for Tuva Data Tools: resize, destroy and setLanguage."
 outline: deep
 ---
 

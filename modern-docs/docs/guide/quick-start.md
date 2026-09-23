@@ -1,6 +1,7 @@
 ---
 outline: false
 pageClass: quick-start-page
+description: "Embed Tuva Data Tools in a web page with React 18, load a dataset, and control the plot through the actions API."
 ---
 
 # Quick Start
@@ -9,7 +10,7 @@ Get up and running with Tuva Data Tools in minutes.
 
 ## Prerequisites
 
-- React 15.6.1+ or React 16+
+- React 18 and React DOM 18 (UMD builds)
 - jQuery 3.2.1+ (will be removed in future versions)
 - A modern browser (Chrome, Firefox, Safari, Edge)
 
@@ -19,17 +20,17 @@ Add React, React DOM, and jQuery to your page:
 
 ```html
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 ## Step 2: Add Tuva Data Tools
 
-Import the library and stylesheet:
+Import the library and stylesheet from the Tuva CDN. The script defines a global `TuvaDataTools` component:
 
 ```html
-<link rel="stylesheet" href="/assets/tools/tuva-data-tools.min.css">
-<script src="/assets/tools/tuva-data-tools.min.js"></script>
+<link rel="stylesheet" href="https://tools.tuvalabs.com/data-exploration/tools-docs/tuva-data-tools.min.css">
+<script src="https://tools.tuvalabs.com/data-exploration/tools-docs/tuva-data-tools.min.js"></script>
 ```
 
 ## Step 3: Prepare Your Data
@@ -65,24 +66,31 @@ const metaData = {
 
 ## Step 4: Create the Component
 
-Use `ReactDOM.render()` which returns the component instance. Access API methods via the `actions` property:
+`TuvaDataTools` is a class component, so a `ref` gives you the instance. Its API methods live on the `actions` property:
 
 ```javascript
-// Render the component
-const tuvaDataTools = ReactDOM.render(
+let tuvaDataTools;
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   React.createElement(TuvaDataTools, {
     columnIds: columnIds,
     columnNames: columnNames,
     rowData: rowData,
-    metaData: metaData
-  }),
-  document.getElementById('root')
+    metaData: metaData,
+    // Called with the component instance once it mounts
+    ref: (instance) => {
+      if (!instance) return;
+      tuvaDataTools = instance;
+      tuvaDataTools.actions.changeTheme('dark');
+      tuvaDataTools.actions.setGridLines(true);
+    }
+  })
 );
-
-// Access API methods via .actions
-tuvaDataTools.actions.changeTheme('dark');
-tuvaDataTools.actions.setGridLines(true);
 ```
+
+::: tip Legacy `ReactDOM.render`
+`ReactDOM.render()` still works in React 18 (with a deprecation warning) and returns the instance directly. The live editors on this site use it for brevity.
+:::
 
 ## Step 5: Using the API
 
@@ -162,16 +170,18 @@ Here's a full working example:
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Required: the library bundle is UTF-8 -->
+  <meta charset="utf-8">
   <title>Tuva Data Tools Demo</title>
-  <link rel="stylesheet" href="/assets/tools/tuva-data-tools.min.css">
+  <link rel="stylesheet" href="https://tools.tuvalabs.com/data-exploration/tools-docs/tuva-data-tools.min.css">
 </head>
 <body>
   <div id="root" style="width: 100%; height: 600px;"></div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="/assets/tools/tuva-data-tools.min.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://tools.tuvalabs.com/data-exploration/tools-docs/tuva-data-tools.min.js"></script>
   
   <script>
     const columnIds = ['id', 'name', 'age', 'score'];
@@ -192,23 +202,21 @@ Here's a full working example:
       ]
     };
 
-    // Render component
-    const tuvaDataTools = ReactDOM.render(
+    // Render component; the ref receives the instance once it mounts
+    ReactDOM.createRoot(document.getElementById('root')).render(
       React.createElement(TuvaDataTools, {
         columnIds: columnIds,
         columnNames: columnNames,
         rowData: rowData,
-        metaData: metaData
-      }),
-      document.getElementById('root')
+        metaData: metaData,
+        ref: (tuvaDataTools) => {
+          if (!tuvaDataTools) return;
+          tuvaDataTools.actions.changeTheme('tuva');
+          tuvaDataTools.actions.setGridLines(true);
+          tuvaDataTools.actions.setAnimation(true);
+        }
+      })
     );
-
-    // Configure after render
-    setTimeout(() => {
-      tuvaDataTools.actions.changeTheme('tuva');
-      tuvaDataTools.actions.setGridLines(true);
-      tuvaDataTools.actions.setAnimation(true);
-    }, 500);
   </script>
 </body>
 </html>
@@ -220,3 +228,4 @@ Here's a full working example:
 - Try the [Playground](/playground) to experiment interactively
 - See [Configuration](/api/configuration) for customization options
 - Learn about [Plot State](/api/plot-state) for saving and sharing visualizations
+- Validate saved plot states against the [Plot State JSON Schema](/schema/plot-state.schema.json)

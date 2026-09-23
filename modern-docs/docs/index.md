@@ -1,5 +1,6 @@
 ---
 layout: home
+description: "Developer documentation for Tuva Data Tools: embed interactive data exploration, graphing and statistics in any web page with React 18 and the actions API."
 
 hero:
   name: Tuva Data Tools

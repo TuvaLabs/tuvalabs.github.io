@@ -94,9 +94,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ## Step 5: Using the API
 
-Access methods through the `actions` property:
+Access methods through the `actions` property. `createRoot().render()` mounts asynchronously, so `tuvaDataTools` is `undefined` until the `ref` callback from Step 4 has run. Call these from that callback, or later (for example in a button handler):
 
 ```javascript
+// Guard for code that can run before the component has mounted
+if (!tuvaDataTools) throw new Error('Tuva Data Tools has not mounted yet');
+
 // Change appearance
 tuvaDataTools.actions.changeTheme('dark');
 tuvaDataTools.actions.setFontSize(1.2); // multiplier, not pixels
